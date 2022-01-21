@@ -13,7 +13,6 @@ function SearchResultPage() {
         <Search />
       </div>
       <Divider />
-
       <SearchResult />
     </div>
   );
