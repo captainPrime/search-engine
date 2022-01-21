@@ -4,11 +4,6 @@ import { FaTwitter } from "react-icons/fa";
 import "../assets/css/bookmark.css";
 import "../assets/css/search.css";
 import "../assets/css/searchPage.css";
-import {
-  getDocument,
-  createDocument,
-  deleteDocument,
-} from "../services/firebase-config";
 import Bookmarks from "../components/bookmarks";
 import Search from "../components/search";
 import Logo from "../components/logo";
