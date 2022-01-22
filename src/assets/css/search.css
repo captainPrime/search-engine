@@ -13,10 +13,11 @@ h1 {
   flex-direction: row;
   text-align: center;
   align-content: center;
+  margin-top: 10px;
 }
 .search-field {
   box-shadow: rgba(0, 0, 0, 0.2) 0px 18px 50px -10px;
-  height: 70px;
+  height: 60px;
   text-indent: 20px;
   font-family: arial, sans-serif;
   border: solid 1px rgb(222, 222, 222);

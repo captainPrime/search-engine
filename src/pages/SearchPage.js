@@ -42,7 +42,7 @@ function SearchPage(props) {
   return (
     <div className="main-search">
       {error ? (
-        <AlertFnc errorMessage="You have inputed an invalid url... please try again and please check your connection" />
+        <AlertFnc errorMessage="Please check your internet connection" />
       ) : (
         <div></div>
       )}
