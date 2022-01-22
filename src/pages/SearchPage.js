@@ -9,27 +9,46 @@ import Search from "../components/search";
 import Logo from "../components/logo";
 import { AlertFnc } from "../components/BootstrapFunctions";
 import BGModal from "../components/Modal";
-
+import axios from "axios";
 function SearchPage(props) {
   const [searchValue, setSearchValue] = useState("");
   const [loading, setloading] = useState(false);
   const [error, setError] = useState(false);
   const [bookmarkFromStore, setBookmarks] = useState([]);
-
+  const [apiResult, setApiResult] = useState();
+  const [searchResult, setSearchResult] = useState();
   const handlechangeFn = (e) => {
     setSearchValue(e.target.value);
   };
-
+  const SearchFnc = async () => {
+    try {
+      await axios
+        .get("https://jsonplaceholder.typicode.com/posts/")
+        .then((response) => {
+          setApiResult(response.data);
+          setSearchResult(
+            response.data.filter((p) =>
+              p.body.toLowerCase().includes(searchValue.toLowerCase())
+            )
+          );
+        });
+    } catch (error) {
+      setError(true);
+      setTimeout(() => {
+        setError(false);
+      }, 3000);
+    }
+  };
   return (
     <div className="main-search">
       {error ? (
-        <AlertFnc errorMessage="You have inputed an invalid url... please try again" />
+        <AlertFnc errorMessage="You have inputed an invalid url... please try again and please check your connection" />
       ) : (
         <div></div>
       )}
       <Logo width={"245px"} />
       <div className="search-input_container">
-        <Search handlechange={handlechangeFn} />
+        <Search handlechange={handlechangeFn} SearchFnc={SearchFnc} />
       </div>
       {loading ? (
         <Bookmarks bookmarks={bookmarkFromStore} />

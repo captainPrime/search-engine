@@ -6,7 +6,6 @@ import Button from "react-bootstrap/button";
 import "../assets/css/bootstrapfnc.css";
 import "../assets/css/bookmark.css";
 import { deleteDocument } from "../services/firebase-config";
-
 export function AlertFnc(props) {
   return (
     <div>
@@ -14,7 +13,6 @@ export function AlertFnc(props) {
     </div>
   );
 }
-
 export function PopoverFnc(props) {
   const DeleteUrlFnc = async (id) => {
     try {
@@ -45,7 +43,6 @@ export function PopoverFnc(props) {
       </Popover.Body>
     </Popover>
   );
-
   return (
     <OverlayTrigger
       rootClose
@@ -66,7 +63,6 @@ export function PopoverFnc(props) {
     </OverlayTrigger>
   );
 }
-
 export function PopoverAddFnc(props) {
   const DeleteUrlFnc = async (id) => {
     try {
@@ -76,7 +72,6 @@ export function PopoverAddFnc(props) {
       console.log(error);
     }
   };
-
   const popover = (
     <Popover id="popover-basic">
       <Popover.Header as="h3">Add To Bookmark?</Popover.Header>
@@ -85,7 +80,7 @@ export function PopoverAddFnc(props) {
           <Button
             className="btn btn-primary" /* onClick={() => CreateUrlFnc(props.SelectedUrlId)} */
           >
-            Add 
+            Add
           </Button>
           <Button
             className="btn btn-danger"
@@ -97,7 +92,6 @@ export function PopoverAddFnc(props) {
       </Popover.Body>
     </Popover>
   );
-
   return (
     <OverlayTrigger
       rootClose

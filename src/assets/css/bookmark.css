@@ -1,60 +1,57 @@
 .bookmark-container {
-    list-style: none;
-    margin: auto;
-    width: 50%;
-    padding: 2rem;
-    padding-top: 0;
-    display: flex;
-    justify-content: center;
-    flex-direction: row;
-    text-align: center;
-    align-content: center;
-    flex-wrap: wrap;
+  list-style: none;
+  margin: auto;
+  width: 50%;
+  padding: 2rem;
+  padding-top: 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  text-align: center;
+  align-content: center;
+  flex-wrap: wrap;
 }
 .bookmark {
-    padding:20px;
-    border: solid 1px grey;
-    margin: 10px;
-    border-radius: 50px;
-    border-color: #f1f3f4;
-    text-decoration: none;
-    color: rgb(104, 104, 104);
-    background-color: #f1f3f4;   
-    width: 65px;
+  padding: 20px;
+  border: solid 1px grey;
+  margin: 10px;
+  border-radius: 50px;
+  border-color: #f1f3f4;
+  text-decoration: none;
+  color: rgb(104, 104, 104);
+  background-color: #f1f3f4;
+  width: 65px;
 }
 .bookmark-link {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 p {
-    font-family: arial, sans-serif;
-    font-size: 14px;
-    margin-top: -5px;
-    text-decoration: none;
-    color: black;
-    font-weight: 500;
+  font-family: arial, sans-serif;
+  font-size: 14px;
+  margin-top: -5px;
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
 }
-p:hover, a:hover {
-    text-decoration: none;
-    color: #4285F5
+p:hover,
+a:hover {
+  text-decoration: none;
+  color: #4285f5;
 }
 .section {
-    text-decoration: none;
-    padding: 0px 10px 0 10px;
-    margin: 0px 5px 0 5px;
+  text-decoration: none;
+  padding: 0px 10px 0 10px;
+  margin: 0px 5px 0 5px;
 }
-
 .section:hover {
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
-
-.section:hover .ellipsis{
-    color: rgb(160, 160, 160) !important
-} 
-
+.section:hover .ellipsis {
+  color: rgb(160, 160, 160) !important;
+}
 @media (max-width: 900px) {
-    .bookmark-container {
-        width: 100%;
-        }
+  .bookmark-container {
+    width: 100%;
+  }
 }
-

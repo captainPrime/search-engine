@@ -1,8 +1,6 @@
 import * as React from "react";
 import { FaPaperPlane, FaSearch } from "react-icons/fa";
 import "../assets/css/search.css";
-/* import "../assets/css/searchPage.css"; */
-
 function Search(props) {
   return (
     <div className="container">
@@ -15,15 +13,14 @@ function Search(props) {
           type="text"
           onChange={props.handlechange}
           className="search-field"
-          onKeyPress={(e) => e.key === "Enter" && props.CreateUrlFnc()}
+          onKeyPress={(e) => e.key === "Enter" && props.SearchFnc()}
           placeholder="type a url"
         />
-        <button onClick={props.CreateUrlFnc} className="submit-btn">
+        <button onClick={props.SearchFnc} className="submit-btn">
           <FaPaperPlane style={{ color: "rgb(210, 210, 210)" }} />
         </button>
       </div>
     </div>
   );
 }
-
 export default Search;
