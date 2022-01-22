@@ -27,8 +27,8 @@ function SearchPage(props) {
         .then((response) => {
           setApiResult(response.data);
           setSearchResult(
-            response.data.filter((p) =>
-              p.body.toLowerCase().includes(searchValue.toLowerCase())
+            response.data.filter((result) =>
+              result.body.toLowerCase().includes(searchValue.toLowerCase())
             )
           );
         });
