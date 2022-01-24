@@ -69,7 +69,6 @@ export function PopoverAddFnc(props) {
       await deleteDocument("url", props.SelectedUrlId);
       window.location.reload();
     } catch (error) {
-      console.log(error);
     }
   };
   const popover = (
