@@ -22,7 +22,7 @@ function Search(props) {
   const SearchFnc = async () => {
     try {
       await axios
-        .get("https://jsonplaceholder.typicode.com/posts/")
+        .get(process.env.REACT_APP_API_URI)
         .then((response) => {
           setApiResult(response.data);
 
