@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { FaEllipsisV } from "react-icons/fa";
 import { Alert, OverlayTrigger } from "react-bootstrap";
 import Popover from "react-bootstrap/popover";
@@ -68,8 +68,7 @@ export function PopoverAddFnc(props) {
     try {
       await deleteDocument("url", props.SelectedUrlId);
       window.location.reload();
-    } catch (error) {
-    }
+    } catch (error) {}
   };
   const popover = (
     <Popover id="popover-basic">

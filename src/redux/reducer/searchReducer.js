@@ -12,3 +12,13 @@ export const searchReducer = (state = initialState, {type, payload}) => {
                 return state
     }
 }
+
+export const errorReducer = (state = false, {type, payload}) =>{
+    switch(type){
+        case ActionTypes.SET_ERROR:
+            return payload
+
+            default:
+                return state
+    }
+}

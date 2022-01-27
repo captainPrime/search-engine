@@ -6,9 +6,7 @@ import { useSelector } from "react-redux";
 
 function SearchResult() {
   const searchResultRedux = useSelector((state) => state);
-  const result = searchResultRedux.searchResults.data
-
-  console.log(result)
+  const result = searchResultRedux.searchResults.data;
   return (
     <div className="search-result">
       <h3>{result.length} results found:</h3>

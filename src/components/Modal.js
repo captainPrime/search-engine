@@ -3,7 +3,6 @@ import Button from "react-bootstrap/button";
 import { Modal } from "react-bootstrap";
 import { FaPen } from "react-icons/fa";
 import "../assets/css/upload.css";
-import { storage } from "../services/firebase-config";
 function BGModal() {
   const [show, setShow] = useState(false);
   const handleClose = async () => {

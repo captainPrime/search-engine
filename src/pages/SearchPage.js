@@ -1,59 +1,23 @@
 import React from "react";
-import { useEffect, useState } from "react";
-import { FaTwitter } from "react-icons/fa";
+import { useState } from "react";
+/* import { FaTwitter } from "react-icons/fa"; */
 import "../assets/css/bookmark.css";
 import "../assets/css/search.css";
 import "../assets/css/searchPage.css";
 import Bookmarks from "../components/bookmarks";
 import Search from "../components/search";
 import Logo from "../components/logo";
+import { useSelector } from "react-redux";
 import { AlertFnc } from "../components/BootstrapFunctions";
 import BGModal from "../components/Modal";
-import axios from "axios";
-import { useDispatch, useSelector } from "react-redux";
-import {FetchSearchData} from '../redux/actions/searchAction'
-import { useNavigate } from 'react-router-dom';
 
 function SearchPage(props) {
-  const [searchValue, setSearchValue] = useState("");
   const [loading, setloading] = useState(false);
-  const [error, setError] = useState(false);
   const [bookmarkFromStore, setBookmarks] = useState([]);
-  const [apiResult, setApiResult] = useState();
 
-  const navigate = useNavigate();
+  const error = useSelector((state) => state.error);
+  console.log(error);
 
-  const handlechangeFn = (e) => {
-    setSearchValue(e.target.value);
-  };
-
-  const searchResultRedux = useSelector((state) => state);
-  const result = searchResultRedux.searchResults.data
-  const dispatch = useDispatch()
-
-  const SearchFnc = async () => {
-    try {
-      await axios
-        .get("https://jsonplaceholder.typicode.com/posts/")
-        .then((response) => {
-          setApiResult(response.data);
-
-          dispatch(FetchSearchData(
-            response.data.filter((result) =>
-              result.body.toLowerCase().includes(searchValue.toLowerCase())
-            )
-
-          ));
-          navigate('/search');
-        });
-    } catch (error) {
-      setError(true);
-      setTimeout(() => {
-        setError(false);
-      }, 3000);
-    }
-  };
-  
   return (
     <div className="main-search">
       {error ? (
@@ -63,7 +27,7 @@ function SearchPage(props) {
       )}
       <Logo width={"245px"} />
       <div className="search-input_container">
-        <Search /* handlechange={handlechangeFn} SearchFnc={SearchFnc} */ />
+        <Search />
       </div>
       {loading ? (
         <Bookmarks bookmarks={bookmarkFromStore} />

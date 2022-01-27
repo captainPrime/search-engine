@@ -7,3 +7,10 @@ export const FetchSearchData = (data) => {
     }
 
 }
+
+export const SetError = (error) => {
+    return {
+        type: ActionTypes.SET_ERROR,
+        payload: error
+    }
+}
