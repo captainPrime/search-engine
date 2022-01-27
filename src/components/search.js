@@ -2,6 +2,7 @@ import * as React from "react";
 import { FaPaperPlane, FaSearch } from "react-icons/fa";
 import "../assets/css/search.css";
 function Search(props) {
+  
   return (
     <div className="container">
       <div className="input-form">

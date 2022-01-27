@@ -10,27 +10,41 @@ import Logo from "../components/logo";
 import { AlertFnc } from "../components/BootstrapFunctions";
 import BGModal from "../components/Modal";
 import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import {FetchSearchData} from '../redux/actions/searchAction'
+import { useNavigate } from 'react-router-dom';
+
 function SearchPage(props) {
   const [searchValue, setSearchValue] = useState("");
   const [loading, setloading] = useState(false);
   const [error, setError] = useState(false);
   const [bookmarkFromStore, setBookmarks] = useState([]);
   const [apiResult, setApiResult] = useState();
-  const [searchResult, setSearchResult] = useState();
+
+  const navigate = useNavigate();
+
   const handlechangeFn = (e) => {
     setSearchValue(e.target.value);
   };
+
+  const searchResultRedux = useSelector((state) => state);
+  const result = searchResultRedux.searchResults.data
+  const dispatch = useDispatch()
+
   const SearchFnc = async () => {
     try {
       await axios
         .get("https://jsonplaceholder.typicode.com/posts/")
         .then((response) => {
           setApiResult(response.data);
-          setSearchResult(
+
+          dispatch(FetchSearchData(
             response.data.filter((result) =>
               result.body.toLowerCase().includes(searchValue.toLowerCase())
             )
-          );
+
+          ));
+          navigate('/search');
         });
     } catch (error) {
       setError(true);
@@ -39,6 +53,7 @@ function SearchPage(props) {
       }, 3000);
     }
   };
+  
   return (
     <div className="main-search">
       {error ? (
@@ -48,7 +63,7 @@ function SearchPage(props) {
       )}
       <Logo width={"245px"} />
       <div className="search-input_container">
-        <Search handlechange={handlechangeFn} SearchFnc={SearchFnc} />
+        <Search /* handlechange={handlechangeFn} SearchFnc={SearchFnc} */ />
       </div>
       {loading ? (
         <Bookmarks bookmarks={bookmarkFromStore} />
