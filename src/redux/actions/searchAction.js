@@ -14,3 +14,10 @@ export const SetError = (error) => {
         payload: error
     }
 }
+
+export const SetSpecificSearch = (data) => {
+    return {
+        type: ActionTypes.SET_SPECIFIC_SEARCH,
+        payload: data
+    }
+}

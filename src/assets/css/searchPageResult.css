@@ -29,6 +29,7 @@ hr.solid {
 #search-result_link a:hover {
   color: #660099;
   text-decoration: underline;
+  cursor: pointer;
 }
 .search-result p:hover {
   color: black;

@@ -16,7 +16,7 @@ export function AlertFnc(props) {
 export function PopoverFnc(props) {
   const DeleteUrlFnc = async (id) => {
     try {
-      await deleteDocument("url", props.SelectedUrlId);
+      await deleteDocument("Bookmarks", props.SelectedUrlId);
       window.location.reload();
     } catch (error) {
       console.log(error);
@@ -56,7 +56,7 @@ export function PopoverFnc(props) {
           style={{
             cursor: "pointer",
             float: "right",
-            marginTop: "10px" /* , color: "rgba(160, 160, 160, 0) " */,
+            marginTop: "10px",
           }}
         />
       </div>
@@ -64,19 +64,14 @@ export function PopoverFnc(props) {
   );
 }
 export function PopoverAddFnc(props) {
-  const DeleteUrlFnc = async (id) => {
-    try {
-      await deleteDocument("url", props.SelectedUrlId);
-      window.location.reload();
-    } catch (error) {}
-  };
+
   const popover = (
     <Popover id="popover-basic">
       <Popover.Header as="h3">Add To Bookmark?</Popover.Header>
       <Popover.Body>
         <div className="delete-section">
           <Button
-            className="btn btn-primary" /* onClick={() => CreateUrlFnc(props.SelectedUrlId)} */
+            className="btn btn-primary" onClick={props.CreateUrlFnc} 
           >
             Add
           </Button>
@@ -103,7 +98,7 @@ export function PopoverAddFnc(props) {
           style={{
             cursor: "pointer",
             float: "right",
-            marginTop: "10px" /* , color: "rgba(160, 160, 160, 0) " */,
+            marginTop: "10px",
           }}
         />
       </div>

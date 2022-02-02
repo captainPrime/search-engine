@@ -13,6 +13,16 @@ export const searchReducer = (state = initialState, {type, payload}) => {
     }
 }
 
+export const specificSearchReducer = (state = initialState, {type, payload}) => {
+    switch (type){
+        case ActionTypes.SET_SPECIFIC_SEARCH:
+            return {data: payload};
+
+            default:
+                return state
+    }
+}
+
 export const errorReducer = (state = false, {type, payload}) =>{
     switch(type){
         case ActionTypes.SET_ERROR:

@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 /* import { FaTwitter } from "react-icons/fa"; */
 import "../assets/css/bookmark.css";
 import "../assets/css/search.css";
@@ -10,13 +10,23 @@ import Logo from "../components/logo";
 import { useSelector } from "react-redux";
 import { AlertFnc } from "../components/BootstrapFunctions";
 import BGModal from "../components/Modal";
-
+import {getDocument} from "../services/firebase-config"
 function SearchPage(props) {
   const [loading, setloading] = useState(false);
   const [bookmarkFromStore, setBookmarks] = useState([]);
 
   const error = useSelector((state) => state.error);
-  console.log(error);
+
+  useEffect(() => {
+    const getUrl = async () => {
+      const data = await getDocument("Bookmarks");
+      setBookmarks(
+        data.docs.map((doc) => ({ name: doc.data().name, id: doc.id }))
+      );
+      setloading(true)
+    };    
+    getUrl();
+  }, []);
 
   return (
     <div className="main-search">
