@@ -13,7 +13,6 @@ function DetailsPage() {
     return data.id == id;
   });
 
-  console.log(data[0]);
   return (
     <div>
       <div className="header">
@@ -21,7 +20,7 @@ function DetailsPage() {
         <Search />
       </div>
       <div>
-        <hr class="solid"></hr>
+        <hr className="solid"></hr>
       </div>
       <div className="result-section">
         <h1>{data[0].title}</h1>

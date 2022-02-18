@@ -1,5 +1,5 @@
 import React from "react";
-import { AlertFnc, PopoverAddFnc } from "./BootstrapFunctions";
+import { PopoverAddFnc } from "./BootstrapFunctions";
 import Divider from "./divider";
 import "../assets/css/searchPageResult.css";
 import { createDocument } from "../services/firebase-config";
@@ -11,10 +11,10 @@ function SearchResult() {
   const result = searchResultRedux.searchResults.data;
   const navigate = useNavigate();
 
-  const CreateUrlFnc = async (dataName) => {
+  const CreateUrlFnc = async (dataName, dataID) => {
     try {
       if (result) {
-        await createDocument("Bookmarks", { name: dataName });
+        await createDocument("Bookmarks", { name: dataName, selector: dataID });
         alert("Added to bookmark");
         document.body.click();
       }
@@ -45,7 +45,7 @@ function SearchResult() {
 
                   <div id="popover-button">
                     <PopoverAddFnc
-                      CreateUrlFnc={() => CreateUrlFnc(each.title)}
+                      CreateUrlFnc={() => CreateUrlFnc(each.title, each.id)}
                     />
                   </div>
                 </div>

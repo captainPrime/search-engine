@@ -21,25 +21,20 @@ function Search(props) {
 
   const SearchFnc = async () => {
     try {
-      await axios
-        .get(process.env.REACT_APP_API_URI)
-        .then((response) => {
-          setApiResult(response.data);
+      await axios.get(`${process.env.REACT_APP_API_URI}`).then((response) => {
+        setApiResult(response.data);
 
-          dispatch(
-            FetchSearchData(
-              response.data.filter((result) =>
-                result.body.toLowerCase().includes(searchValue.toLowerCase())
-              )
+        dispatch(
+          FetchSearchData(
+            response.data.filter((result) =>
+              result.body.toLowerCase().includes(searchValue.toLowerCase())
             )
-          );
-          navigate("/search");
-        });
+          )
+        );
+        navigate("/search");
+      });
     } catch (error) {
-      dispatch(SetError(true));
-      setTimeout(() => {
-        dispatch(SetError(false));
-      }, 3000);
+      console.log(error);
     }
   };
   return (
