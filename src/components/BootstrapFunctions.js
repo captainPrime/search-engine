@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { FaEllipsisV } from "react-icons/fa";
 import { Alert, OverlayTrigger } from "react-bootstrap";
 import Popover from "react-bootstrap/popover";
@@ -6,7 +6,6 @@ import Button from "react-bootstrap/button";
 import "../assets/css/bootstrapfnc.css";
 import "../assets/css/bookmark.css";
 import { deleteDocument } from "../services/firebase-config";
-
 export function AlertFnc(props) {
   return (
     <div>
@@ -14,11 +13,10 @@ export function AlertFnc(props) {
     </div>
   );
 }
-
 export function PopoverFnc(props) {
   const DeleteUrlFnc = async (id) => {
     try {
-      await deleteDocument("url", props.SelectedUrlId);
+      await deleteDocument("Bookmarks", props.SelectedUrlId);
       window.location.reload();
     } catch (error) {
       console.log(error);
@@ -45,7 +43,6 @@ export function PopoverFnc(props) {
       </Popover.Body>
     </Popover>
   );
-
   return (
     <OverlayTrigger
       rootClose
@@ -59,23 +56,14 @@ export function PopoverFnc(props) {
           style={{
             cursor: "pointer",
             float: "right",
-            marginTop: "10px" /* , color: "rgba(160, 160, 160, 0) " */,
+            marginTop: "10px",
           }}
         />
       </div>
     </OverlayTrigger>
   );
 }
-
 export function PopoverAddFnc(props) {
-  const DeleteUrlFnc = async (id) => {
-    try {
-      await deleteDocument("url", props.SelectedUrlId);
-      window.location.reload();
-    } catch (error) {
-      console.log(error);
-    }
-  };
 
   const popover = (
     <Popover id="popover-basic">
@@ -83,9 +71,9 @@ export function PopoverAddFnc(props) {
       <Popover.Body>
         <div className="delete-section">
           <Button
-            className="btn btn-primary" /* onClick={() => CreateUrlFnc(props.SelectedUrlId)} */
+            className="btn btn-primary" onClick={props.CreateUrlFnc} 
           >
-            Add 
+            Add
           </Button>
           <Button
             className="btn btn-danger"
@@ -97,7 +85,6 @@ export function PopoverAddFnc(props) {
       </Popover.Body>
     </Popover>
   );
-
   return (
     <OverlayTrigger
       rootClose
@@ -111,7 +98,7 @@ export function PopoverAddFnc(props) {
           style={{
             cursor: "pointer",
             float: "right",
-            marginTop: "10px" /* , color: "rgba(160, 160, 160, 0) " */,
+            marginTop: "10px",
           }}
         />
       </div>
